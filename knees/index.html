@@ -1113,107 +1113,212 @@ body {
 </div>
 
 <!-- ══════════════════════════════════════
-     PRIVATE SECTION — кто делал операцию
+     PRIVATE SECTION — contacts database
 ══════════════════════════════════════ -->
-<div id="private-section" style="display:none;position:fixed;inset:0;background:#f7f7f8;z-index:1000;overflow-y:auto;">
-  <div style="max-width:600px;margin:0 auto;padding:48px 24px 80px;">
+<div id="private-section" style="display:none;position:fixed;inset:0;background:#fff;z-index:1000;overflow-y:auto;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;">
 
-    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:32px;">
-      <div>
-        <div style="font-size:11px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#a1a1aa;margin-bottom:4px;">Личное</div>
-        <div style="font-size:24px;font-weight:800;letter-spacing:-0.03em;color:#18181b;">Кто делал операцию</div>
+  <!-- Top bar -->
+  <div style="border-bottom:1px solid #e4e4e7;padding:0 24px;height:48px;display:flex;align-items:center;gap:12px;position:sticky;top:0;background:#fff;z-index:10;">
+    <button onclick="document.getElementById('private-section').style.display='none'"
+      style="background:none;border:none;color:#71717a;cursor:pointer;font-size:13px;padding:4px 8px;border-radius:6px;display:flex;align-items:center;gap:4px;"
+      onmouseover="this.style.background='#f4f4f5'" onmouseout="this.style.background='none'">
+      ← MRI Knees
+    </button>
+    <span style="color:#d4d4d8;font-size:14px;">/</span>
+    <span style="font-size:13px;font-weight:500;color:#18181b;">Контакты</span>
+  </div>
+
+  <div style="max-width:860px;margin:0 auto;padding:40px 24px 80px;">
+
+    <!-- Title -->
+    <div style="margin-bottom:28px;">
+      <div style="font-size:30px;font-weight:700;color:#18181b;letter-spacing:-0.03em;margin-bottom:6px;">🗂 Контакты</div>
+      <div style="font-size:13px;color:#a1a1aa;">Врачи и люди, кто делал операцию</div>
+    </div>
+
+    <!-- Filter tabs -->
+    <div id="filter-tabs" style="display:flex;gap:4px;margin-bottom:20px;border-bottom:1px solid #e4e4e7;padding-bottom:0;">
+      <button class="ftab ftab-active" data-filter="all"    onclick="setFilter('all')"    style="padding:6px 14px;border:none;background:none;font-size:13px;cursor:pointer;border-bottom:2px solid #18181b;color:#18181b;font-weight:600;margin-bottom:-1px;">Все</button>
+      <button class="ftab"             data-filter="врач"   onclick="setFilter('врач')"   style="padding:6px 14px;border:none;background:none;font-size:13px;cursor:pointer;border-bottom:2px solid transparent;color:#71717a;margin-bottom:-1px;">Врачи</button>
+      <button class="ftab"             data-filter="кто делал" onclick="setFilter('кто делал')" style="padding:6px 14px;border:none;background:none;font-size:13px;cursor:pointer;border-bottom:2px solid transparent;color:#71717a;margin-bottom:-1px;">Кто делал</button>
+    </div>
+
+    <!-- Table -->
+    <div style="border:1px solid #e4e4e7;border-radius:10px;overflow:hidden;">
+      <!-- Header -->
+      <div style="display:grid;grid-template-columns:2fr 1fr 2fr 2fr 36px;background:#f9f9f9;border-bottom:1px solid #e4e4e7;padding:0 4px;">
+        <div style="padding:8px 12px;font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:0.07em;color:#a1a1aa;">Имя</div>
+        <div style="padding:8px 12px;font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:0.07em;color:#a1a1aa;">Тег</div>
+        <div style="padding:8px 12px;font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:0.07em;color:#a1a1aa;">Операция / Роль</div>
+        <div style="padding:8px 12px;font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:0.07em;color:#a1a1aa;">Заметка</div>
+        <div></div>
       </div>
-      <button onclick="document.getElementById('private-section').style.display='none'"
-        style="padding:8px 14px;background:#f4f4f5;border:1px solid #e4e4e7;border-radius:8px;font-size:13px;color:#71717a;cursor:pointer;">
-        ← Назад
+      <!-- Rows -->
+      <div id="contacts-table-body"></div>
+    </div>
+
+    <!-- + New row -->
+    <div style="margin-top:2px;">
+      <button id="add-row-btn" onclick="toggleAddForm()"
+        style="display:flex;align-items:center;gap:6px;padding:8px 12px;background:none;border:none;color:#a1a1aa;font-size:13px;cursor:pointer;border-radius:8px;width:100%;"
+        onmouseover="this.style.background='#f4f4f5';this.style.color='#71717a'" onmouseout="this.style.background='none';this.style.color='#a1a1aa'">
+        + Новый контакт
       </button>
-    </div>
 
-    <div id="people-list" style="display:flex;flex-direction:column;gap:12px;margin-bottom:32px;">
-      <!-- карточки людей -->
-    </div>
-
-    <!-- Добавить человека -->
-    <div style="background:#fff;border:1.5px dashed #d4d4d8;border-radius:14px;padding:20px;">
-      <div style="font-size:12px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:#a1a1aa;margin-bottom:12px;">Добавить</div>
-      <div style="display:flex;flex-direction:column;gap:8px;">
-        <input id="add-name" placeholder="Имя" style="padding:9px 12px;border:1.5px solid #e4e4e7;border-radius:8px;font-size:14px;outline:none;"
-          onfocus="this.style.borderColor='#1d4ed8'" onblur="this.style.borderColor='#e4e4e7'">
-        <input id="add-op" placeholder="Операция (необязательно)" style="padding:9px 12px;border:1.5px solid #e4e4e7;border-radius:8px;font-size:14px;outline:none;"
-          onfocus="this.style.borderColor='#1d4ed8'" onblur="this.style.borderColor='#e4e4e7'">
-        <input id="add-note" placeholder="Заметка (необязательно)" style="padding:9px 12px;border:1.5px solid #e4e4e7;border-radius:8px;font-size:14px;outline:none;"
-          onfocus="this.style.borderColor='#1d4ed8'" onblur="this.style.borderColor='#e4e4e7'">
-        <button onclick="addPerson()"
-          style="padding:10px;background:#18181b;color:#fff;border:none;border-radius:8px;font-size:14px;font-weight:600;cursor:pointer;margin-top:4px;">
-          Добавить
-        </button>
+      <!-- Inline add form -->
+      <div id="add-form" style="display:none;border:1px solid #d4d4d8;border-radius:10px;padding:16px;margin-top:8px;background:#fafafa;">
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:10px;">
+          <input id="add-name" placeholder="Имя *" style="padding:8px 11px;border:1.5px solid #e4e4e7;border-radius:7px;font-size:14px;outline:none;background:#fff;"
+            onfocus="this.style.borderColor='#1d4ed8'" onblur="this.style.borderColor='#e4e4e7'">
+          <select id="add-tag" style="padding:8px 11px;border:1.5px solid #e4e4e7;border-radius:7px;font-size:14px;outline:none;background:#fff;color:#3f3f46;cursor:pointer;"
+            onfocus="this.style.borderColor='#1d4ed8'" onblur="this.style.borderColor='#e4e4e7'">
+            <option value="врач">Врач</option>
+            <option value="кто делал">Кто делал операцию</option>
+          </select>
+          <input id="add-op" placeholder="Операция / Роль" style="padding:8px 11px;border:1.5px solid #e4e4e7;border-radius:7px;font-size:14px;outline:none;background:#fff;"
+            onfocus="this.style.borderColor='#1d4ed8'" onblur="this.style.borderColor='#e4e4e7'">
+          <input id="add-note" placeholder="Заметка" style="padding:8px 11px;border:1.5px solid #e4e4e7;border-radius:7px;font-size:14px;outline:none;background:#fff;"
+            onfocus="this.style.borderColor='#1d4ed8'" onblur="this.style.borderColor='#e4e4e7'"
+            onkeydown="if(event.key==='Enter')addContact()">
+        </div>
+        <div style="display:flex;gap:8px;">
+          <button onclick="addContact()"
+            style="padding:8px 18px;background:#18181b;color:#fff;border:none;border-radius:7px;font-size:13px;font-weight:600;cursor:pointer;">
+            Сохранить
+          </button>
+          <button onclick="toggleAddForm()"
+            style="padding:8px 14px;background:#f4f4f5;color:#71717a;border:none;border-radius:7px;font-size:13px;cursor:pointer;">
+            Отмена
+          </button>
+        </div>
       </div>
     </div>
+
+    <!-- Count -->
+    <div id="contacts-count" style="margin-top:16px;font-size:12px;color:#a1a1aa;text-align:right;"></div>
 
   </div>
 </div>
 
 <script>
-// ── Данные (хранятся в localStorage) ──────────────────────────────
-const STORAGE_KEY = 'knee_people_v1';
+// ── Config ─────────────────────────────────────────────────────────
+const STORAGE_KEY = 'knee_contacts_v2';
+let activeFilter = 'all';
 
-const DEFAULT_PEOPLE = [
-  { name: 'Нина',  op: '',  note: '' },
-  { name: 'Мама',  op: '',  note: '' },
-  { name: 'Костя', op: '',  note: '' }
+const TAG_STYLES = {
+  'врач':       { bg:'#eff6ff', color:'#1d4ed8', border:'#bfdbfe' },
+  'кто делал':  { bg:'#f5f3ff', color:'#7c3aed', border:'#ddd6fe' },
+};
+
+const DEFAULT_CONTACTS = [
+  { name: 'Нина',        tag: 'кто делал', op: '',                   note: '' },
+  { name: 'Мама',        tag: 'кто делал', op: '',                   note: '' },
+  { name: 'Костя',       tag: 'кто делал', op: '',                   note: '' },
+  { name: 'Max Knitter', tag: 'врач',      op: '',                   note: '' },
+  { name: 'Сдобников',   tag: 'врач',      op: '',                   note: '' },
+  { name: 'Hello Ryan',  tag: 'врач',      op: '',                   note: '' },
+  { name: 'Глазков Юрий Константинович', tag: 'врач', op: '', note: '' },
 ];
 
-function loadPeople() {
+// ── Storage ────────────────────────────────────────────────────────
+function loadContacts() {
   try {
     const raw = localStorage.getItem(STORAGE_KEY);
-    return raw ? JSON.parse(raw) : DEFAULT_PEOPLE;
-  } catch(e) { return DEFAULT_PEOPLE; }
+    return raw ? JSON.parse(raw) : DEFAULT_CONTACTS;
+  } catch(e) { return DEFAULT_CONTACTS; }
 }
-
-function savePeople(list) {
+function saveContacts(list) {
   localStorage.setItem(STORAGE_KEY, JSON.stringify(list));
 }
 
-// ── Render ─────────────────────────────────────────────────────────
-function renderPeople() {
-  const list = loadPeople();
-  const container = document.getElementById('people-list');
-  container.innerHTML = '';
-  list.forEach((p, i) => {
-    const card = document.createElement('div');
-    card.style.cssText = 'background:#fff;border:1px solid #e4e4e7;border-radius:12px;padding:16px 18px;display:flex;align-items:flex-start;gap:14px;';
-    card.innerHTML = `
-      <div style="width:40px;height:40px;border-radius:50%;background:#f4f4f5;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0;">👤</div>
-      <div style="flex:1;">
-        <div style="font-size:16px;font-weight:700;color:#18181b;letter-spacing:-0.01em;">${p.name}</div>
-        ${p.op   ? `<div style="font-size:13px;color:#3f3f46;margin-top:2px;">🏥 ${p.op}</div>` : ''}
-        ${p.note ? `<div style="font-size:13px;color:#71717a;margin-top:2px;">💬 ${p.note}</div>` : ''}
-      </div>
-      <button onclick="removePerson(${i})" style="background:none;border:none;color:#a1a1aa;cursor:pointer;font-size:18px;padding:0;line-height:1;" title="Удалить">×</button>
-    `;
-    container.appendChild(card);
-  });
+// ── Tag chip HTML ──────────────────────────────────────────────────
+function tagChip(tag) {
+  const s = TAG_STYLES[tag] || { bg:'#f4f4f5', color:'#71717a', border:'#e4e4e7' };
+  return `<span style="display:inline-block;padding:2px 9px;border-radius:20px;font-size:11px;font-weight:600;background:${s.bg};color:${s.color};border:1px solid ${s.border};white-space:nowrap;">${tag}</span>`;
 }
 
-function addPerson() {
+// ── Avatar ─────────────────────────────────────────────────────────
+function avatar(name) {
+  const initials = name.split(' ').map(w=>w[0]).join('').slice(0,2).toUpperCase();
+  const colors = ['#dbeafe','#fce7f3','#dcfce7','#fef9c3','#ede9fe','#ffedd5'];
+  const tc =     ['#1d4ed8','#be185d','#15803d','#a16207','#7c3aed','#c2410c'];
+  const idx = name.charCodeAt(0) % colors.length;
+  return `<div style="width:28px;height:28px;border-radius:50%;background:${colors[idx]};color:${tc[idx]};display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0;">${initials}</div>`;
+}
+
+// ── Render ─────────────────────────────────────────────────────────
+function renderContacts() {
+  const all = loadContacts();
+  const filtered = activeFilter === 'all' ? all : all.filter(c => c.tag === activeFilter);
+  const tbody = document.getElementById('contacts-table-body');
+  tbody.innerHTML = '';
+
+  filtered.forEach((c) => {
+    const realIdx = all.indexOf(c);
+    const row = document.createElement('div');
+    row.style.cssText = 'display:grid;grid-template-columns:2fr 1fr 2fr 2fr 36px;border-bottom:1px solid #f4f4f5;align-items:center;padding:0 4px;transition:background 0.1s;';
+    row.onmouseover = () => row.style.background = '#fafafa';
+    row.onmouseout  = () => row.style.background = '';
+    row.innerHTML = `
+      <div style="padding:10px 12px;display:flex;align-items:center;gap:10px;">
+        ${avatar(c.name)}
+        <span style="font-size:14px;font-weight:500;color:#18181b;">${c.name}</span>
+      </div>
+      <div style="padding:10px 12px;">${tagChip(c.tag)}</div>
+      <div style="padding:10px 12px;font-size:13px;color:#3f3f46;">${c.op || '<span style="color:#d4d4d8;">—</span>'}</div>
+      <div style="padding:10px 12px;font-size:13px;color:#71717a;">${c.note || '<span style="color:#d4d4d8;">—</span>'}</div>
+      <div style="padding:10px 6px;text-align:center;">
+        <button onclick="removeContact(${realIdx})" style="background:none;border:none;color:#d4d4d8;cursor:pointer;font-size:16px;line-height:1;padding:2px;"
+          onmouseover="this.style.color='#ef4444'" onmouseout="this.style.color='#d4d4d8'" title="Удалить">×</button>
+      </div>
+    `;
+    tbody.appendChild(row);
+  });
+
+  if (filtered.length === 0) {
+    tbody.innerHTML = '<div style="padding:32px;text-align:center;color:#a1a1aa;font-size:13px;">Нет контактов</div>';
+  }
+
+  const count = document.getElementById('contacts-count');
+  count.textContent = `${filtered.length} ${filtered.length === 1 ? 'контакт' : filtered.length < 5 ? 'контакта' : 'контактов'}`;
+}
+
+function setFilter(f) {
+  activeFilter = f;
+  document.querySelectorAll('.ftab').forEach(btn => {
+    const isActive = btn.dataset.filter === f;
+    btn.style.borderBottomColor = isActive ? '#18181b' : 'transparent';
+    btn.style.color = isActive ? '#18181b' : '#71717a';
+    btn.style.fontWeight = isActive ? '600' : '400';
+  });
+  renderContacts();
+}
+
+function toggleAddForm() {
+  const form = document.getElementById('add-form');
+  form.style.display = form.style.display === 'none' ? 'block' : 'none';
+  if (form.style.display === 'block') document.getElementById('add-name').focus();
+}
+
+function addContact() {
   const name = document.getElementById('add-name').value.trim();
-  if (!name) return;
+  if (!name) { document.getElementById('add-name').focus(); return; }
+  const tag  = document.getElementById('add-tag').value;
   const op   = document.getElementById('add-op').value.trim();
   const note = document.getElementById('add-note').value.trim();
-  const list = loadPeople();
-  list.push({ name, op, note });
-  savePeople(list);
-  document.getElementById('add-name').value = '';
-  document.getElementById('add-op').value = '';
-  document.getElementById('add-note').value = '';
-  renderPeople();
+  const list = loadContacts();
+  list.push({ name, tag, op, note });
+  saveContacts(list);
+  ['add-name','add-op','add-note'].forEach(id => document.getElementById(id).value = '');
+  document.getElementById('add-form').style.display = 'none';
+  renderContacts();
 }
 
-function removePerson(i) {
-  const list = loadPeople();
+function removeContact(i) {
+  const list = loadContacts();
   list.splice(i, 1);
-  savePeople(list);
-  renderPeople();
+  saveContacts(list);
+  renderContacts();
 }
 
 // ── Auth ───────────────────────────────────────────────────────────
@@ -1224,7 +1329,7 @@ function checkPrivate() {
     document.getElementById('private-pw').value = '';
     document.getElementById('private-err').style.display = 'none';
     document.getElementById('private-section').style.display = 'block';
-    renderPeople();
+    renderContacts();
   } else {
     document.getElementById('private-err').style.display = 'block';
     document.getElementById('private-pw').value = '';
