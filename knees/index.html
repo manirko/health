@@ -415,7 +415,7 @@ body {
 }
 
 .src-i::before {
-  content: '💬 пояснение';
+  content: '💬 значение';
   color: var(--purple);
 }
 
@@ -694,19 +694,11 @@ body {
 <div style="background:var(--white); border-bottom:1px solid var(--border);">
 <div class="hero">
   <div class="hero-eyebrow">
-    <span>Siloam Hospitals Denpasar</span>
-    <span>·</span>
     <span>18 марта 2026</span>
-    </div>
-  <h1>МРТ обоих коленей</h1>
-  <div class="hero-sub">Андрей Манирко · 36 лет · Multiplanar T1/T2/PDFS</div>
-
-  <div class="stats-row">
-    <div class="stat-chip"><span class="sc-label">Пациент</span><span class="sc-val">SHDP.00484306</span></div>
-    <div class="stat-chip"><span class="sc-label">Accession</span><span class="sc-val">14000034294603</span></div>
-    <div class="stat-chip"><span class="sc-label">Радиолог</span><span class="sc-val">dr. Lorentia Sp.Rad(K)</span></div>
-    <div class="stat-chip"><span class="sc-label">Подписано</span><span class="sc-val">18.03.2026 · 21:00</span></div>
   </div>
+  <h1>МРТ обоих коленей</h1>
+  <div class="hero-sub">М, 36 лет · МРТ 18.03.2026 · T1/T2/PDFS multiplanar</div>
+
 
   <div style="margin-top:20px;display:flex;align-items:center;gap:10px;flex-wrap:wrap;">
     <a href="https://radiologi.siloamhospitals.com/externalInterface/shareviewexi?ENC=wzhfXjIcD/rOKE6aMIEkPw==" target="_blank"
@@ -728,8 +720,8 @@ body {
   <div class="alert">
     <div class="alert-icon">⚠️</div>
     <div class="alert-body">
-      <div class="alert-title">Главное: разрыв мениска левого колена</div>
-      <div class="alert-text">Комплексный разрыв заднего рога медиального мениска с выходом на суставную поверхность. Мениск сам не срастается. Требуется консультация ортопеда-травматолога (SpOT) для решения вопроса об артроскопии.</div>
+      <div class="alert-title">Ключевая находка: left knee</div>
+      <div class="alert-text">Комплексный разрыв заднего рога медиального мениска с вертикальным компонентом до нижней суставной поверхности. Сопутствующие повреждения: остеохондральный перелом tibial plateau, частичное повреждение ACL, ганглиевая киста PCL.</div>
     </div>
   </div>
 </div>
@@ -746,7 +738,7 @@ body {
     <span class="toc-num">01</span>
     <span class="toc-body">
       <span class="toc-title">Левое колено</span>
-      <span class="toc-desc">Серьёзные структурные повреждения</span>
+      <span class="toc-desc">Разрыв мениска, остеохондральный перелом, ACL</span>
     </span>
     <span class="toc-status" style="background:var(--red-bg);color:var(--red);border-color:var(--red-bd);">Критично</span>
     <span class="toc-arrow">↓</span>
@@ -756,7 +748,7 @@ body {
     <span class="toc-num">02</span>
     <span class="toc-body">
       <span class="toc-title">Правое колено</span>
-      <span class="toc-desc">Значительно лучше левого, нет разрывов</span>
+      <span class="toc-desc">MCL/LCL растяжение, дегенерация мениска</span>
     </span>
     <span class="toc-status" style="background:var(--green-bg);color:var(--green);border-color:var(--green-bd);">Стабильно</span>
     <span class="toc-arrow">↓</span>
@@ -775,8 +767,8 @@ body {
 <!-- Legend -->
 <div style="margin-top:24px;">
   <div class="legend">
-    <div class="legend-item"><span class="l-badge" style="background:var(--green-bg);color:var(--green);border-color:var(--green-bd);">📋 репорт</span> — цитата из заключения радиолога dr. Lorentia</div>
-    <div class="legend-item"><span class="l-badge" style="background:var(--purple-bg);color:var(--purple);border-color:var(--purple-bd);">💬 пояснение</span> — интерпретация / перевод на человеческий язык</div>
+    <div class="legend-item"><span class="l-badge" style="background:var(--green-bg);color:var(--green);border-color:var(--green-bd);">📋 репорт</span> — из заключения лучевого диагноста</div>
+    <div class="legend-item"><span class="l-badge" style="background:var(--purple-bg);color:var(--purple);border-color:var(--purple-bd);">💬 значение</span> — клиническая интерпретация</div>
   </div>
 </div>
 
@@ -787,7 +779,7 @@ body {
 <div class="section" id="left-knee">
   <div class="section-head">
     <h2>⚠️ Левое колено</h2>
-    <span class="section-note">Серьёзные структурные повреждения — нужен хирург</span>
+    <span class="section-note">Множественные структурные повреждения · консультация ортопеда-травматолога</span>
   </div>
 
   <!-- Кости -->
@@ -962,7 +954,7 @@ body {
 <div class="section" id="right-knee" style="margin-top:0;">
   <div class="section-head">
     <h2>Правое колено</h2>
-    <span class="section-note">Значительно лучше левого — нет разрывов, нет переломов</span>
+    <span class="section-note">Лигаментарные повреждения без разрывов · консервативная тактика</span>
   </div>
 
   <!-- Кости -->
@@ -1117,7 +1109,7 @@ body {
 <div class="section" id="priorities" style="margin-top:0;">
   <div class="section-head">
     <h2>Приоритеты лечения</h2>
-    <span class="section-note">Интерпретация · не замена врачу</span>
+    <span class="section-note">По степени срочности</span>
   </div>
 
   <div class="priority-table" style="margin-bottom:20px;">
