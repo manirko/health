@@ -1083,8 +1083,154 @@ body {
 
 <footer class="footer">
   <span>МРТ · 18.03.2026 · Siloam Denpasar</span>
-  <span>Структура данных из репорта радиолога. Пояснения — интерпретация, не диагноз.</span>
+  <span style="cursor:pointer;user-select:none;" onclick="document.getElementById('private-gate').style.display='flex'" title="Личное">· · ·</span>
 </footer>
+
+<!-- ══════════════════════════════════════
+     PRIVATE GATE — password prompt
+══════════════════════════════════════ -->
+<div id="private-gate" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.55);backdrop-filter:blur(4px);z-index:999;align-items:center;justify-content:center;">
+  <div style="background:#fff;border-radius:16px;padding:32px 28px;width:min(360px,90vw);box-shadow:0 20px 60px rgba(0,0,0,0.2);">
+    <div style="font-size:13px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:#a1a1aa;margin-bottom:8px;">Личный раздел</div>
+    <div style="font-size:18px;font-weight:700;color:#18181b;margin-bottom:20px;">Введи пароль</div>
+    <input id="private-pw" type="password" placeholder="пароль"
+      style="width:100%;padding:11px 14px;border:1.5px solid #e4e4e7;border-radius:10px;font-size:15px;outline:none;margin-bottom:12px;"
+      onkeydown="if(event.key==='Enter')checkPrivate()"
+      onfocus="this.style.borderColor='#1d4ed8'" onblur="this.style.borderColor='#e4e4e7'">
+    <div id="private-err" style="color:#dc2626;font-size:13px;margin-bottom:10px;display:none;">Неверный пароль</div>
+    <div style="display:flex;gap:8px;">
+      <button onclick="checkPrivate()"
+        style="flex:1;padding:11px;background:#18181b;color:#fff;border:none;border-radius:10px;font-size:14px;font-weight:600;cursor:pointer;">
+        Войти
+      </button>
+      <button onclick="document.getElementById('private-gate').style.display='none';document.getElementById('private-pw').value='';document.getElementById('private-err').style.display='none';"
+        style="padding:11px 16px;background:#f4f4f5;color:#3f3f46;border:none;border-radius:10px;font-size:14px;cursor:pointer;">
+        ✕
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════
+     PRIVATE SECTION — кто делал операцию
+══════════════════════════════════════ -->
+<div id="private-section" style="display:none;position:fixed;inset:0;background:#f7f7f8;z-index:1000;overflow-y:auto;">
+  <div style="max-width:600px;margin:0 auto;padding:48px 24px 80px;">
+
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:32px;">
+      <div>
+        <div style="font-size:11px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#a1a1aa;margin-bottom:4px;">Личное</div>
+        <div style="font-size:24px;font-weight:800;letter-spacing:-0.03em;color:#18181b;">Кто делал операцию</div>
+      </div>
+      <button onclick="document.getElementById('private-section').style.display='none'"
+        style="padding:8px 14px;background:#f4f4f5;border:1px solid #e4e4e7;border-radius:8px;font-size:13px;color:#71717a;cursor:pointer;">
+        ← Назад
+      </button>
+    </div>
+
+    <div id="people-list" style="display:flex;flex-direction:column;gap:12px;margin-bottom:32px;">
+      <!-- карточки людей -->
+    </div>
+
+    <!-- Добавить человека -->
+    <div style="background:#fff;border:1.5px dashed #d4d4d8;border-radius:14px;padding:20px;">
+      <div style="font-size:12px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:#a1a1aa;margin-bottom:12px;">Добавить</div>
+      <div style="display:flex;flex-direction:column;gap:8px;">
+        <input id="add-name" placeholder="Имя" style="padding:9px 12px;border:1.5px solid #e4e4e7;border-radius:8px;font-size:14px;outline:none;"
+          onfocus="this.style.borderColor='#1d4ed8'" onblur="this.style.borderColor='#e4e4e7'">
+        <input id="add-op" placeholder="Операция (необязательно)" style="padding:9px 12px;border:1.5px solid #e4e4e7;border-radius:8px;font-size:14px;outline:none;"
+          onfocus="this.style.borderColor='#1d4ed8'" onblur="this.style.borderColor='#e4e4e7'">
+        <input id="add-note" placeholder="Заметка (необязательно)" style="padding:9px 12px;border:1.5px solid #e4e4e7;border-radius:8px;font-size:14px;outline:none;"
+          onfocus="this.style.borderColor='#1d4ed8'" onblur="this.style.borderColor='#e4e4e7'">
+        <button onclick="addPerson()"
+          style="padding:10px;background:#18181b;color:#fff;border:none;border-radius:8px;font-size:14px;font-weight:600;cursor:pointer;margin-top:4px;">
+          Добавить
+        </button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<script>
+// ── Данные (хранятся в localStorage) ──────────────────────────────
+const STORAGE_KEY = 'knee_people_v1';
+
+const DEFAULT_PEOPLE = [
+  { name: 'Нина',  op: '',  note: '' },
+  { name: 'Мама',  op: '',  note: '' },
+  { name: 'Костя', op: '',  note: '' }
+];
+
+function loadPeople() {
+  try {
+    const raw = localStorage.getItem(STORAGE_KEY);
+    return raw ? JSON.parse(raw) : DEFAULT_PEOPLE;
+  } catch(e) { return DEFAULT_PEOPLE; }
+}
+
+function savePeople(list) {
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(list));
+}
+
+// ── Render ─────────────────────────────────────────────────────────
+function renderPeople() {
+  const list = loadPeople();
+  const container = document.getElementById('people-list');
+  container.innerHTML = '';
+  list.forEach((p, i) => {
+    const card = document.createElement('div');
+    card.style.cssText = 'background:#fff;border:1px solid #e4e4e7;border-radius:12px;padding:16px 18px;display:flex;align-items:flex-start;gap:14px;';
+    card.innerHTML = `
+      <div style="width:40px;height:40px;border-radius:50%;background:#f4f4f5;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0;">👤</div>
+      <div style="flex:1;">
+        <div style="font-size:16px;font-weight:700;color:#18181b;letter-spacing:-0.01em;">${p.name}</div>
+        ${p.op   ? `<div style="font-size:13px;color:#3f3f46;margin-top:2px;">🏥 ${p.op}</div>` : ''}
+        ${p.note ? `<div style="font-size:13px;color:#71717a;margin-top:2px;">💬 ${p.note}</div>` : ''}
+      </div>
+      <button onclick="removePerson(${i})" style="background:none;border:none;color:#a1a1aa;cursor:pointer;font-size:18px;padding:0;line-height:1;" title="Удалить">×</button>
+    `;
+    container.appendChild(card);
+  });
+}
+
+function addPerson() {
+  const name = document.getElementById('add-name').value.trim();
+  if (!name) return;
+  const op   = document.getElementById('add-op').value.trim();
+  const note = document.getElementById('add-note').value.trim();
+  const list = loadPeople();
+  list.push({ name, op, note });
+  savePeople(list);
+  document.getElementById('add-name').value = '';
+  document.getElementById('add-op').value = '';
+  document.getElementById('add-note').value = '';
+  renderPeople();
+}
+
+function removePerson(i) {
+  const list = loadPeople();
+  list.splice(i, 1);
+  savePeople(list);
+  renderPeople();
+}
+
+// ── Auth ───────────────────────────────────────────────────────────
+function checkPrivate() {
+  const pw = document.getElementById('private-pw').value;
+  if (pw === 'manirko') {
+    document.getElementById('private-gate').style.display = 'none';
+    document.getElementById('private-pw').value = '';
+    document.getElementById('private-err').style.display = 'none';
+    document.getElementById('private-section').style.display = 'block';
+    renderPeople();
+  } else {
+    document.getElementById('private-err').style.display = 'block';
+    document.getElementById('private-pw').value = '';
+    document.getElementById('private-pw').focus();
+  }
+}
+</script>
 
 </body>
 </html>
