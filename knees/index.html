@@ -65,9 +65,10 @@ body {
   font-family: var(--font);
   background: var(--bg);
   color: var(--text);
-  font-size: 15px;
-  line-height: 1.6;
+  font-size: 17px;           /* Apple HIG standard, WCAG min 16px */
+  line-height: 1.65;
   -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 /* ═══════════════════════════════════════════════
@@ -133,13 +134,13 @@ body {
 .hero {
   background: var(--white);
   border-bottom: 1px solid var(--border);
-  padding: 44px 28px 36px;
-  max-width: 900px;
+  padding: 40px 24px 36px;
+  max-width: 740px;
   margin: 0 auto;
 }
 
 @media(min-width: 640px) {
-  .hero { padding: 56px 56px 44px; }
+  .hero { padding: 52px 40px 44px; }
 }
 
 .hero-eyebrow {
@@ -215,65 +216,69 @@ body {
 /* Alert box */
 .alert {
   display: flex;
-  gap: 12px;
-  padding: 14px 16px;
+  gap: 14px;
+  padding: 16px 20px;
   border-radius: var(--radius);
   background: var(--red-bg);
   border: 1px solid var(--red-bd);
+  margin-top: 24px;
 }
 
-.alert-icon { font-size: 20px; flex-shrink: 0; margin-top: 1px; }
+.alert-icon { font-size: 22px; flex-shrink: 0; margin-top: 2px; }
 .alert-body {}
 .alert-title {
-  font-size: 14px;
+  font-size: 15px;
   font-weight: 700;
   color: var(--red-t);
-  margin-bottom: 3px;
+  margin-bottom: 4px;
+  letter-spacing: -0.01em;
 }
 .alert-text {
-  font-size: 13px;
+  font-size: 15px;
   color: var(--text2);
-  line-height: 1.55;
+  line-height: 1.6;
 }
 
 /* ═══════════════════════════════════════════════
    MAIN LAYOUT
+   Max ~72 chars/line at 17px → ideal readability
 ═══════════════════════════════════════════════ */
 .main {
-  max-width: 900px;
+  max-width: 740px;
   margin: 0 auto;
-  padding: 0 28px;
+  padding: 0 24px;
 }
 
 @media(min-width: 640px) {
-  .main { padding: 0 56px; }
+  .main { padding: 0 40px; }
 }
 
 /* ═══════════════════════════════════════════════
    SECTION
 ═══════════════════════════════════════════════ */
 .section {
-  margin-top: 36px;
+  margin-top: 40px;
 }
 
 .section-head {
   display: flex;
   align-items: baseline;
   gap: 10px;
-  margin-bottom: 18px;
+  margin-bottom: 20px;
   padding-bottom: 14px;
   border-bottom: 1px solid var(--border);
 }
 
 .section-head h2 {
-  font-size: 21px;
+  font-size: 22px;
   font-weight: 700;
   letter-spacing: -0.025em;
   color: var(--text);
+  line-height: 1.2;
 }
 
 .section-head .section-note {
-  font-size: 13px;
+  font-size: 14px;
   color: var(--text3);
 }
 
@@ -312,10 +317,10 @@ body {
 .card[data-sev="ok"]       { border-left: 4px solid #22c55e; }
 
 .card-top {
-  padding: 16px 20px 16px 16px;
+  padding: 18px 20px 18px 16px;
   display: flex;
   align-items: flex-start;
-  gap: 12px;
+  gap: 14px;
 }
 
 .card-dot {
@@ -333,7 +338,7 @@ body {
 .card-info { flex: 1; min-width: 0; }
 
 .card-name {
-  font-size: 15px;
+  font-size: 16px;
   font-weight: 600;
   letter-spacing: -0.015em;
   color: var(--text);
@@ -341,9 +346,10 @@ body {
 }
 
 .card-sub {
-  font-size: 12px;
+  font-size: 13px;
   color: var(--text3);
-  margin-top: 1px;
+  margin-top: 3px;
+  line-height: 1.4;
 }
 
 .sev-badge {
@@ -364,31 +370,31 @@ body {
 /* card body */
 .card-body {
   border-top: 1px solid var(--border);
-  padding: 16px 20px 16px 16px;
+  padding: 20px;
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 10px;
 }
 
 /* source blocks */
 .src {
   display: flex;
-  gap: 10px;
-  padding: 11px 14px;
+  gap: 12px;
+  padding: 14px 16px;
   border-radius: 10px;
-  font-size: 13.5px;
-  line-height: 1.6;
+  font-size: 15px;       /* WCAG: readable body size */
+  line-height: 1.65;
   color: var(--text2);
 }
 
 .src::before {
   font-size: 10px;
   font-weight: 700;
-  letter-spacing: 0.07em;
+  letter-spacing: 0.06em;
   text-transform: uppercase;
   flex-shrink: 0;
-  width: 82px;
-  padding-top: 1px;
+  width: 76px;
+  padding-top: 3px;
   line-height: 1.4;
 }
 
@@ -424,12 +430,12 @@ body {
 }
 
 .pt-head {
-  padding: 14px 18px;
+  padding: 14px 20px;
   background: var(--bg);
   border-bottom: 1px solid var(--border);
-  font-size: 12px;
+  font-size: 11px;
   font-weight: 700;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.07em;
   text-transform: uppercase;
   color: var(--text3);
   display: flex;
@@ -440,9 +446,9 @@ body {
 .pt-row {
   display: grid;
   grid-template-columns: 36px 1fr auto;
-  gap: 12px;
+  gap: 14px;
   align-items: flex-start;
-  padding: 12px 18px;
+  padding: 16px 20px;
   border-bottom: 1px solid var(--border);
 }
 
@@ -454,11 +460,12 @@ body {
   display: flex; align-items: center; justify-content: center;
   font-size: 12px; font-weight: 700;
   flex-shrink: 0;
+  margin-top: 2px;
 }
 
 .pt-content {}
-.pt-title { font-size: 14px; font-weight: 600; color: var(--text); letter-spacing: -0.01em; margin-bottom: 2px; }
-.pt-detail { font-size: 12px; color: var(--text3); line-height: 1.5; }
+.pt-title { font-size: 15px; font-weight: 600; color: var(--text); letter-spacing: -0.01em; margin-bottom: 4px; line-height: 1.3; }
+.pt-detail { font-size: 14px; color: var(--text3); line-height: 1.55; }
 
 .pt-knee {
   font-size: 10px;
@@ -476,22 +483,22 @@ body {
 ═══════════════════════════════════════════════ */
 .info-box {
   border-radius: var(--radius);
-  padding: 16px 18px;
+  padding: 20px 24px;
   border: 1px solid;
 }
 
 .info-box .ib-label {
   font-size: 11px;
   font-weight: 700;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
-  margin-bottom: 8px;
+  margin-bottom: 10px;
 }
 
-.info-box p, .info-box ul { font-size: 14px; color: var(--text2); line-height: 1.65; }
+.info-box p, .info-box ul { font-size: 15px; color: var(--text2); line-height: 1.7; }
 .info-box strong { color: var(--text); }
-.info-box ul { padding-left: 18px; margin-top: 6px; }
-.info-box li { margin-bottom: 3px; }
+.info-box ul { padding-left: 20px; margin-top: 8px; }
+.info-box li { margin-bottom: 6px; }
 
 .ib-blue { background: var(--blue-bg); border-color: var(--blue-bd); }
 .ib-blue .ib-label { color: var(--blue-t); }
@@ -504,18 +511,18 @@ body {
 ═══════════════════════════════════════════════ */
 .meta-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-  gap: 8px;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 16px;
   background: var(--white);
   border: 1px solid var(--border);
   border-radius: var(--radius);
-  padding: 16px 18px;
+  padding: 20px 24px;
   box-shadow: var(--shadow);
 }
 
 .meta-item {}
 .meta-key { font-size: 11px; color: var(--text4); font-weight: 600; text-transform: uppercase; letter-spacing: 0.06em; }
-.meta-val { font-size: 13px; color: var(--text2); font-weight: 500; margin-top: 2px; }
+.meta-val { font-size: 14px; color: var(--text2); font-weight: 500; margin-top: 4px; line-height: 1.4; }
 
 /* ═══════════════════════════════════════════════
    LEGEND
@@ -523,19 +530,19 @@ body {
 .legend {
   display: flex;
   flex-wrap: wrap;
-  gap: 10px;
-  padding: 12px 18px;
+  gap: 12px;
+  padding: 14px 20px;
   background: var(--white);
   border: 1px solid var(--border);
   border-radius: var(--radius-sm);
-  margin-bottom: 20px;
+  margin-bottom: 24px;
 }
 
 .legend-item {
   display: flex;
   align-items: center;
-  gap: 5px;
-  font-size: 12px;
+  gap: 7px;
+  font-size: 13px;
   color: var(--text3);
 }
 
@@ -560,11 +567,11 @@ body {
    FOOTER
 ═══════════════════════════════════════════════ */
 .footer {
-  max-width: 900px;
-  margin: 40px auto 0;
-  padding: 24px 48px;
+  max-width: 740px;
+  margin: 48px auto 0;
+  padding: 24px 40px;
   border-top: 1px solid var(--border);
-  font-size: 12px;
+  font-size: 13px;
   color: var(--text4);
   display: flex;
   justify-content: space-between;
@@ -632,10 +639,13 @@ body {
       <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
       Открыть снимки МРТ
     </a>
-    <span style="display:inline-flex;align-items:center;gap:6px;padding:10px 16px;background:var(--bg);border:1px solid var(--border);border-radius:100px;font-size:14px;color:var(--text3);letter-spacing:-0.01em;">
+    <span id="pw-chip" onclick="copyPassword()" title="Нажми чтобы скопировать"
+      style="display:inline-flex;align-items:center;gap:6px;padding:10px 16px;background:var(--bg);border:1px solid var(--border);border-radius:100px;font-size:14px;color:var(--text3);letter-spacing:-0.01em;cursor:pointer;user-select:none;transition:background 0.15s,border-color 0.15s;"
+      onmouseover="this.style.background='#ececf0';this.style.borderColor='var(--text4)'" onmouseout="this.style.background='var(--bg)';this.style.borderColor='var(--border)'">
       <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
       <span style="font-weight:500;color:var(--text3);">Пароль</span>
-      <code style="font-family:var(--font-mono);font-size:13px;font-weight:700;color:var(--text);letter-spacing:0.05em;background:var(--white);padding:2px 8px;border-radius:6px;border:1px solid var(--border);">19890514</code>
+      <code id="pw-code" style="font-family:var(--font-mono);font-size:13px;font-weight:700;color:var(--text);letter-spacing:0.05em;background:var(--white);padding:2px 8px;border-radius:6px;border:1px solid var(--border);">19890514</code>
+      <svg id="pw-copy-icon" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="opacity:0.4;"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
     </span>
   </div>
 
@@ -1359,6 +1369,23 @@ function tryOpenPrivate() {
     document.getElementById('private-gate').style.display = 'flex';
     setTimeout(() => document.getElementById('private-pw').focus(), 50);
   }
+}
+
+// ── Copy password ──────────────────────────────────────────────────
+function copyPassword() {
+  navigator.clipboard.writeText('19890514').then(() => {
+    const code = document.getElementById('pw-code');
+    const chip = document.getElementById('pw-chip');
+    const orig = code.textContent;
+    code.textContent = '✓ скопировано';
+    chip.style.background = '#f0fdf4';
+    chip.style.borderColor = '#a8eac5';
+    setTimeout(() => {
+      code.textContent = orig;
+      chip.style.background = 'var(--bg)';
+      chip.style.borderColor = 'var(--border)';
+    }, 1800);
+  });
 }
 
 function checkPrivate() {
