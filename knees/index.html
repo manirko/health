@@ -10,6 +10,7 @@
    RESET & TOKENS
 ═══════════════════════════════════════════════ */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; scroll-padding-top: 68px; }
 
 :root {
   --white:   #ffffff;
@@ -590,6 +591,82 @@ body {
 }
 
 /* ═══════════════════════════════════════════════
+   TABLE OF CONTENTS
+═══════════════════════════════════════════════ */
+.toc {
+  margin: 32px 0 8px;
+}
+
+.toc-label {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text4);
+  margin-bottom: 12px;
+}
+
+.toc-row {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 14px 0;
+  border-top: 1px solid var(--border);
+  text-decoration: none;
+  color: inherit;
+  transition: opacity 0.15s;
+  cursor: pointer;
+}
+
+.toc-row:last-child { border-bottom: 1px solid var(--border); }
+.toc-row:hover { opacity: 0.65; }
+
+.toc-num {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  color: var(--text4);
+  font-variant-numeric: tabular-nums;
+  min-width: 22px;
+  font-family: var(--font-mono);
+}
+
+.toc-body { flex: 1; min-width: 0; }
+
+.toc-title {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--text);
+  letter-spacing: -0.015em;
+  line-height: 1.3;
+}
+
+.toc-desc {
+  font-size: 13px;
+  color: var(--text3);
+  margin-top: 2px;
+  line-height: 1.4;
+}
+
+.toc-status {
+  flex-shrink: 0;
+  font-size: 11px;
+  font-weight: 700;
+  padding: 3px 10px;
+  border-radius: 100px;
+  border: 1px solid;
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+}
+
+.toc-arrow {
+  flex-shrink: 0;
+  color: var(--text4);
+  font-size: 16px;
+  line-height: 1;
+}
+
+/* ═══════════════════════════════════════════════
    RESPONSIVE
 ═══════════════════════════════════════════════ */
 @media(max-width: 500px) {
@@ -620,8 +697,7 @@ body {
     <span>Siloam Hospitals Denpasar</span>
     <span>·</span>
     <span>18 марта 2026</span>
-    <span class="hero-badge">Требует врача</span>
-  </div>
+    </div>
   <h1>МРТ обоих коленей</h1>
   <div class="hero-sub">Андрей Манирко · 36 лет · Multiplanar T1/T2/PDFS</div>
 
@@ -662,8 +738,42 @@ body {
 <!-- ══════ MAIN ══════ -->
 <div class="main">
 
+<!-- TOC -->
+<nav class="toc" aria-label="Содержание">
+  <div class="toc-label">Содержание</div>
+
+  <a class="toc-row" href="#left-knee">
+    <span class="toc-num">01</span>
+    <span class="toc-body">
+      <span class="toc-title">Левое колено</span>
+      <span class="toc-desc">Серьёзные структурные повреждения</span>
+    </span>
+    <span class="toc-status" style="background:var(--red-bg);color:var(--red);border-color:var(--red-bd);">Критично</span>
+    <span class="toc-arrow">↓</span>
+  </a>
+
+  <a class="toc-row" href="#right-knee">
+    <span class="toc-num">02</span>
+    <span class="toc-body">
+      <span class="toc-title">Правое колено</span>
+      <span class="toc-desc">Значительно лучше левого, нет разрывов</span>
+    </span>
+    <span class="toc-status" style="background:var(--green-bg);color:var(--green);border-color:var(--green-bd);">Стабильно</span>
+    <span class="toc-arrow">↓</span>
+  </a>
+
+  <a class="toc-row" href="#priorities">
+    <span class="toc-num">03</span>
+    <span class="toc-body">
+      <span class="toc-title">Приоритеты лечения</span>
+      <span class="toc-desc">8 пунктов по срочности</span>
+    </span>
+    <span class="toc-arrow">↓</span>
+  </a>
+</nav>
+
 <!-- Legend -->
-<div class="section" style="margin-top:24px;">
+<div style="margin-top:24px;">
   <div class="legend">
     <div class="legend-item"><span class="l-badge" style="background:var(--green-bg);color:var(--green);border-color:var(--green-bd);">📋 репорт</span> — цитата из заключения радиолога dr. Lorentia</div>
     <div class="legend-item"><span class="l-badge" style="background:var(--purple-bg);color:var(--purple);border-color:var(--purple-bd);">💬 пояснение</span> — интерпретация / перевод на человеческий язык</div>
@@ -674,7 +784,7 @@ body {
 <!-- ════════════════════════════════════════
      ЛЕВОЕ КОЛЕНО
 ════════════════════════════════════════ -->
-<div class="section">
+<div class="section" id="left-knee">
   <div class="section-head">
     <h2>⚠️ Левое колено</h2>
     <span class="section-note">Серьёзные структурные повреждения — нужен хирург</span>
@@ -849,7 +959,7 @@ body {
 ════════════════════════════════════════ -->
 <hr class="divider">
 
-<div class="section" style="margin-top:0;">
+<div class="section" id="right-knee" style="margin-top:0;">
   <div class="section-head">
     <h2>Правое колено</h2>
     <span class="section-note">Значительно лучше левого — нет разрывов, нет переломов</span>
@@ -1004,7 +1114,7 @@ body {
 ════════════════════════════════════════ -->
 <hr class="divider">
 
-<div class="section" style="margin-top:0;">
+<div class="section" id="priorities" style="margin-top:0;">
   <div class="section-head">
     <h2>Приоритеты лечения</h2>
     <span class="section-note">Интерпретация · не замена врачу</span>
