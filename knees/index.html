@@ -592,7 +592,7 @@ body {
   <span class="nav-current">knees</span>
   <div class="nav-right">
     <a class="nav-btn" href="javascript:window.print()">🖨 Распечатать</a>
-    <button class="nav-btn" onclick="document.getElementById('private-gate').style.display='flex'" style="cursor:pointer;border:none;background:none;font:inherit;">🔐 Админ</button>
+    <button class="nav-btn" onclick="tryOpenPrivate()" style="cursor:pointer;border:none;background:none;font:inherit;">🔐 Админ</button>
   </div>
 </nav>
 
@@ -1084,7 +1084,7 @@ body {
 
 <footer class="footer">
   <span>МРТ · 18.03.2026 · Siloam Denpasar</span>
-  <span style="cursor:pointer;user-select:none;" onclick="document.getElementById('private-gate').style.display='flex'" title="Личное">· · ·</span>
+  <span style="cursor:pointer;user-select:none;" onclick="tryOpenPrivate()" title="Личное">· · ·</span>
 </footer>
 
 <!-- ══════════════════════════════════════
@@ -1322,14 +1322,28 @@ function removeContact(i) {
 }
 
 // ── Auth ───────────────────────────────────────────────────────────
+function openPrivate() {
+  document.getElementById('private-gate').style.display = 'none';
+  document.getElementById('private-section').style.display = 'block';
+  renderContacts();
+}
+
+function tryOpenPrivate() {
+  if (sessionStorage.getItem('admin_auth') === '1') {
+    openPrivate();
+  } else {
+    document.getElementById('private-gate').style.display = 'flex';
+    setTimeout(() => document.getElementById('private-pw').focus(), 50);
+  }
+}
+
 function checkPrivate() {
   const pw = document.getElementById('private-pw').value;
   if (pw === 'manirko') {
-    document.getElementById('private-gate').style.display = 'none';
+    sessionStorage.setItem('admin_auth', '1');
     document.getElementById('private-pw').value = '';
     document.getElementById('private-err').style.display = 'none';
-    document.getElementById('private-section').style.display = 'block';
-    renderContacts();
+    openPrivate();
   } else {
     document.getElementById('private-err').style.display = 'block';
     document.getElementById('private-pw').value = '';
