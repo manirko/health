@@ -1,0 +1,1090 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>МРТ Колени · Андрей Манирко · 18.03.2026</title>
+<meta name="description" content="Результаты МРТ обоих коленей, Siloam Hospitals Denpasar, 18 марта 2026">
+<style>
+/* ═══════════════════════════════════════════════
+   RESET & TOKENS
+═══════════════════════════════════════════════ */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --white: #fff;
+  --bg: #f7f7f8;
+  --surface: #fff;
+  --border: #e4e4e7;
+  --border2: #d4d4d8;
+
+  --text:  #18181b;
+  --text2: #3f3f46;
+  --text3: #71717a;
+  --text4: #a1a1aa;
+
+  --red:     #dc2626;
+  --red-bg:  #fef2f2;
+  --red-bd:  #fecaca;
+  --red-t:   #991b1b;
+
+  --amber:    #b45309;
+  --amber-bg: #fffbeb;
+  --amber-bd: #fde68a;
+  --amber-t:  #92400e;
+
+  --yellow:    #854d0e;
+  --yellow-bg: #fefce8;
+  --yellow-bd: #fef08a;
+  --yellow-t:  #713f12;
+
+  --green:    #166534;
+  --green-bg: #f0fdf4;
+  --green-bd: #bbf7d0;
+
+  --blue:    #1d4ed8;
+  --blue-bg: #eff6ff;
+  --blue-bd: #bfdbfe;
+  --blue-t:  #1e40af;
+
+  --purple:    #7c3aed;
+  --purple-bg: #f5f3ff;
+  --purple-bd: #ddd6fe;
+  --purple-t:  #6d28d9;
+
+  --radius: 12px;
+  --radius-sm: 8px;
+  --shadow: 0 1px 3px rgba(0,0,0,.08), 0 1px 2px rgba(0,0,0,.04);
+  --shadow-md: 0 4px 6px -1px rgba(0,0,0,.07), 0 2px 4px -2px rgba(0,0,0,.05);
+
+  --font: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+  --font-mono: 'SF Mono', 'Cascadia Code', 'Fira Code', monospace;
+}
+
+body {
+  font-family: var(--font);
+  background: var(--bg);
+  color: var(--text);
+  font-size: 15px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ═══════════════════════════════════════════════
+   TOP NAV
+═══════════════════════════════════════════════ */
+.nav {
+  background: var(--white);
+  border-bottom: 1px solid var(--border);
+  padding: 0 24px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  color: var(--text3);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.nav a {
+  color: var(--text3);
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.nav a:hover { color: var(--text); }
+.nav-sep { color: var(--text4); }
+.nav-current { color: var(--text2); font-weight: 500; }
+
+.nav-right {
+  margin-left: auto;
+  display: flex;
+  gap: 8px;
+}
+
+.nav-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 4px 10px;
+  border-radius: 6px;
+  border: 1px solid var(--border2);
+  background: var(--white);
+  color: var(--text2);
+  font-size: 12px;
+  font-weight: 500;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+.nav-btn:hover { background: var(--bg); }
+
+/* ═══════════════════════════════════════════════
+   HERO
+═══════════════════════════════════════════════ */
+.hero {
+  background: var(--white);
+  border-bottom: 1px solid var(--border);
+  padding: 40px 24px 32px;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+@media(min-width: 640px) {
+  .hero { padding: 48px 48px 36px; }
+}
+
+.hero-eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text4);
+  margin-bottom: 12px;
+}
+
+.hero-badge {
+  padding: 2px 8px;
+  border-radius: 100px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  background: var(--red-bg);
+  color: var(--red);
+  border: 1px solid var(--red-bd);
+}
+
+.hero h1 {
+  font-size: clamp(24px, 5vw, 36px);
+  font-weight: 800;
+  letter-spacing: -0.035em;
+  line-height: 1.1;
+  color: var(--text);
+  margin-bottom: 8px;
+}
+
+.hero-sub {
+  font-size: 16px;
+  color: var(--text3);
+  margin-bottom: 24px;
+}
+
+/* Key stats row */
+.stats-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 24px;
+}
+
+.stat-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  border-radius: 100px;
+  border: 1px solid var(--border2);
+  background: var(--bg);
+  font-size: 13px;
+  color: var(--text2);
+}
+
+.stat-chip .sc-label {
+  font-size: 11px;
+  color: var(--text4);
+  margin-right: 2px;
+}
+
+.stat-chip .sc-val { font-weight: 600; }
+
+/* Alert box */
+.alert {
+  display: flex;
+  gap: 12px;
+  padding: 14px 16px;
+  border-radius: var(--radius);
+  background: var(--red-bg);
+  border: 1px solid var(--red-bd);
+}
+
+.alert-icon { font-size: 20px; flex-shrink: 0; margin-top: 1px; }
+.alert-body {}
+.alert-title {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--red-t);
+  margin-bottom: 3px;
+}
+.alert-text {
+  font-size: 13px;
+  color: var(--text2);
+  line-height: 1.55;
+}
+
+/* ═══════════════════════════════════════════════
+   MAIN LAYOUT
+═══════════════════════════════════════════════ */
+.main {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+@media(min-width: 640px) {
+  .main { padding: 0 48px; }
+}
+
+/* ═══════════════════════════════════════════════
+   SECTION
+═══════════════════════════════════════════════ */
+.section {
+  margin-top: 32px;
+}
+
+.section-head {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  margin-bottom: 16px;
+  padding-bottom: 12px;
+  border-bottom: 2px solid var(--border);
+}
+
+.section-head h2 {
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--text);
+}
+
+.section-head .section-note {
+  font-size: 13px;
+  color: var(--text3);
+}
+
+/* ═══════════════════════════════════════════════
+   GROUP HEADING
+═══════════════════════════════════════════════ */
+.group-label {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text4);
+  margin: 20px 0 10px;
+}
+
+/* ═══════════════════════════════════════════════
+   FINDING CARD
+═══════════════════════════════════════════════ */
+.card {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  margin-bottom: 10px;
+  overflow: hidden;
+}
+
+.card + .card { }
+
+/* left accent */
+.card[data-sev="critical"] { border-left: 4px solid var(--red); }
+.card[data-sev="high"]     { border-left: 4px solid var(--amber); }
+.card[data-sev="medium"]   { border-left: 4px solid #eab308; }
+.card[data-sev="ok"]       { border-left: 4px solid #22c55e; }
+
+.card-top {
+  padding: 14px 18px 14px 16px;
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.card-dot {
+  width: 10px; height: 10px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  margin-top: 5px;
+}
+
+.card[data-sev="critical"] .card-dot { background: var(--red); }
+.card[data-sev="high"]     .card-dot { background: var(--amber); }
+.card[data-sev="medium"]   .card-dot { background: #ca8a04; }
+.card[data-sev="ok"]       .card-dot { background: #16a34a; }
+
+.card-info { flex: 1; min-width: 0; }
+
+.card-name {
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  color: var(--text);
+}
+
+.card-sub {
+  font-size: 12px;
+  color: var(--text3);
+  margin-top: 1px;
+}
+
+.sev-badge {
+  flex-shrink: 0;
+  font-size: 11px;
+  font-weight: 700;
+  padding: 3px 9px;
+  border-radius: 100px;
+  white-space: nowrap;
+  border: 1px solid;
+}
+
+.card[data-sev="critical"] .sev-badge { background: var(--red-bg); color: var(--red); border-color: var(--red-bd); }
+.card[data-sev="high"]     .sev-badge { background: var(--amber-bg); color: var(--amber); border-color: var(--amber-bd); }
+.card[data-sev="medium"]   .sev-badge { background: var(--yellow-bg); color: var(--yellow); border-color: var(--yellow-bd); }
+.card[data-sev="ok"]       .sev-badge { background: var(--green-bg); color: var(--green); border-color: var(--green-bd); }
+
+/* card body */
+.card-body {
+  border-top: 1px solid var(--border);
+  padding: 14px 18px 14px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+/* source blocks */
+.src {
+  display: flex;
+  gap: 10px;
+  padding: 10px 12px;
+  border-radius: var(--radius-sm);
+  font-size: 13px;
+  line-height: 1.55;
+  color: var(--text2);
+}
+
+.src::before {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  flex-shrink: 0;
+  width: 82px;
+  padding-top: 1px;
+  line-height: 1.4;
+}
+
+.src-r {
+  background: var(--green-bg);
+  border: 1px solid var(--green-bd);
+}
+
+.src-r::before {
+  content: '📋 репорт';
+  color: var(--green);
+}
+
+.src-i {
+  background: var(--purple-bg);
+  border: 1px solid var(--purple-bd);
+}
+
+.src-i::before {
+  content: '💬 пояснение';
+  color: var(--purple);
+}
+
+/* ═══════════════════════════════════════════════
+   PRIORITY TABLE
+═══════════════════════════════════════════════ */
+.priority-table {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  overflow: hidden;
+}
+
+.pt-head {
+  padding: 14px 18px;
+  background: var(--bg);
+  border-bottom: 1px solid var(--border);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text3);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.pt-row {
+  display: grid;
+  grid-template-columns: 36px 1fr auto;
+  gap: 12px;
+  align-items: flex-start;
+  padding: 12px 18px;
+  border-bottom: 1px solid var(--border);
+}
+
+.pt-row:last-child { border-bottom: none; }
+
+.pt-num {
+  width: 28px; height: 28px;
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 12px; font-weight: 700;
+  flex-shrink: 0;
+}
+
+.pt-content {}
+.pt-title { font-size: 14px; font-weight: 600; color: var(--text); letter-spacing: -0.01em; margin-bottom: 2px; }
+.pt-detail { font-size: 12px; color: var(--text3); line-height: 1.5; }
+
+.pt-knee {
+  font-size: 10px;
+  font-weight: 700;
+  padding: 3px 8px;
+  border-radius: 100px;
+  border: 1px solid;
+  flex-shrink: 0;
+  margin-top: 3px;
+  white-space: nowrap;
+}
+
+/* ═══════════════════════════════════════════════
+   INFO BOX
+═══════════════════════════════════════════════ */
+.info-box {
+  border-radius: var(--radius);
+  padding: 16px 18px;
+  border: 1px solid;
+}
+
+.info-box .ib-label {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+
+.info-box p, .info-box ul { font-size: 14px; color: var(--text2); line-height: 1.65; }
+.info-box strong { color: var(--text); }
+.info-box ul { padding-left: 18px; margin-top: 6px; }
+.info-box li { margin-bottom: 3px; }
+
+.ib-blue { background: var(--blue-bg); border-color: var(--blue-bd); }
+.ib-blue .ib-label { color: var(--blue-t); }
+
+.ib-amber { background: var(--amber-bg); border-color: var(--amber-bd); }
+.ib-amber .ib-label { color: var(--amber); }
+
+/* ═══════════════════════════════════════════════
+   META GRID
+═══════════════════════════════════════════════ */
+.meta-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 8px;
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 16px 18px;
+  box-shadow: var(--shadow);
+}
+
+.meta-item {}
+.meta-key { font-size: 11px; color: var(--text4); font-weight: 600; text-transform: uppercase; letter-spacing: 0.06em; }
+.meta-val { font-size: 13px; color: var(--text2); font-weight: 500; margin-top: 2px; }
+
+/* ═══════════════════════════════════════════════
+   LEGEND
+═══════════════════════════════════════════════ */
+.legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  padding: 12px 18px;
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  margin-bottom: 20px;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 12px;
+  color: var(--text3);
+}
+
+.l-badge {
+  font-size: 10px;
+  font-weight: 700;
+  padding: 2px 7px;
+  border-radius: 4px;
+  border: 1px solid;
+}
+
+/* ═══════════════════════════════════════════════
+   DIVIDER
+═══════════════════════════════════════════════ */
+.divider {
+  border: none;
+  border-top: 1px solid var(--border);
+  margin: 32px 0;
+}
+
+/* ═══════════════════════════════════════════════
+   FOOTER
+═══════════════════════════════════════════════ */
+.footer {
+  max-width: 900px;
+  margin: 40px auto 0;
+  padding: 24px 48px;
+  border-top: 1px solid var(--border);
+  font-size: 12px;
+  color: var(--text4);
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+/* ═══════════════════════════════════════════════
+   PRINT
+═══════════════════════════════════════════════ */
+@media print {
+  .nav, .nav-btn { display: none; }
+  body { background: #fff; }
+  .card, .priority-table, .info-box, .meta-grid { box-shadow: none; border: 1px solid #ccc; }
+  .hero { border: none; padding: 0 0 24px; }
+}
+
+/* ═══════════════════════════════════════════════
+   RESPONSIVE
+═══════════════════════════════════════════════ */
+@media(max-width: 500px) {
+  .nav { padding: 0 16px; }
+  .hero { padding: 32px 16px 24px; }
+  .main { padding: 0 16px; }
+  .src::before { width: 70px; }
+}
+</style>
+</head>
+<body>
+
+<!-- ══════ NAV ══════ -->
+<nav class="nav">
+  <a href="../">🏠 health</a>
+  <span class="nav-sep">/</span>
+  <span class="nav-current">knees</span>
+  <div class="nav-right">
+    <a class="nav-btn" href="javascript:window.print()">🖨 Распечатать</a>
+  </div>
+</nav>
+
+<!-- ══════ HERO ══════ -->
+<div style="background:var(--white); border-bottom:1px solid var(--border);">
+<div class="hero">
+  <div class="hero-eyebrow">
+    <span>Siloam Hospitals Denpasar</span>
+    <span>·</span>
+    <span>18 марта 2026</span>
+    <span class="hero-badge">Требует врача</span>
+  </div>
+  <h1>МРТ обоих коленей</h1>
+  <div class="hero-sub">Андрей Манирко · 36 лет · Multiplanar T1/T2/PDFS</div>
+
+  <div class="stats-row">
+    <div class="stat-chip"><span class="sc-label">Пациент</span><span class="sc-val">SHDP.00484306</span></div>
+    <div class="stat-chip"><span class="sc-label">Accession</span><span class="sc-val">14000034294603</span></div>
+    <div class="stat-chip"><span class="sc-label">Радиолог</span><span class="sc-val">dr. Lorentia Sp.Rad(K)</span></div>
+    <div class="stat-chip"><span class="sc-label">Подписано</span><span class="sc-val">18.03.2026 · 21:00</span></div>
+  </div>
+
+  <div class="alert">
+    <div class="alert-icon">⚠️</div>
+    <div class="alert-body">
+      <div class="alert-title">Главное: разрыв мениска левого колена</div>
+      <div class="alert-text">Комплексный разрыв заднего рога медиального мениска с выходом на суставную поверхность. Мениск сам не срастается. Требуется консультация ортопеда-травматолога (SpOT) для решения вопроса об артроскопии.</div>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- ══════ MAIN ══════ -->
+<div class="main">
+
+<!-- Legend -->
+<div class="section" style="margin-top:24px;">
+  <div class="legend">
+    <div class="legend-item"><span class="l-badge" style="background:var(--green-bg);color:var(--green);border-color:var(--green-bd);">📋 репорт</span> — цитата из заключения радиолога dr. Lorentia</div>
+    <div class="legend-item"><span class="l-badge" style="background:var(--purple-bg);color:var(--purple);border-color:var(--purple-bd);">💬 пояснение</span> — интерпретация / перевод на человеческий язык</div>
+  </div>
+</div>
+
+
+<!-- ════════════════════════════════════════
+     ЛЕВОЕ КОЛЕНО
+════════════════════════════════════════ -->
+<div class="section">
+  <div class="section-head">
+    <h2>⚠️ Левое колено</h2>
+    <span class="section-note">Серьёзные структурные повреждения — нужен хирург</span>
+  </div>
+
+  <!-- Кости -->
+  <div class="group-label">Кости и хрящ</div>
+
+  <div class="card" data-sev="high">
+    <div class="card-top">
+      <div class="card-dot"></div>
+      <div class="card-info">
+        <div class="card-name">Остеохондральный перелом</div>
+        <div class="card-sub">заднебоковое большеберцовое плато</div>
+      </div>
+      <span class="sev-badge">высокий</span>
+    </div>
+    <div class="card-body">
+      <div class="src src-r">Остеохондральный перелом заднебоковой части большеберцового плато с отёком костного мозга</div>
+      <div class="src src-i">Перелом затрагивает одновременно кость и хрящ. Это механическое повреждение — след прямого удара. Объясняет боль при нагрузке. До консультации хирурга: никаких ударных нагрузок (серфинг, прыжки, бег).</div>
+    </div>
+  </div>
+
+  <div class="card" data-sev="medium">
+    <div class="card-top">
+      <div class="card-dot"></div>
+      <div class="card-info">
+        <div class="card-name">Отёк костного мозга</div>
+        <div class="card-sub">trochlear apex — вершина блоковидной вырезки бедра</div>
+      </div>
+      <span class="sev-badge">средний</span>
+    </div>
+    <div class="card-body">
+      <div class="src src-r">Умеренный отёк костного мозга в вершине блоковидной вырезки бедра (trochlear apex)</div>
+      <div class="src src-i">Зона движения надколенника. Воспаление внутри кости — боль при сгибании и разгибании. Лечится вместе с основными повреждениями.</div>
+    </div>
+  </div>
+
+  <!-- Мениски -->
+  <div class="group-label">Мениски</div>
+
+  <div class="card" data-sev="critical">
+    <div class="card-top">
+      <div class="card-dot"></div>
+      <div class="card-info">
+        <div class="card-name">Разрыв медиального мениска ⚠️⚠️</div>
+        <div class="card-sub">задний рог · комплексный · с выходом на суставную поверхность</div>
+      </div>
+      <span class="sev-badge">критично</span>
+    </div>
+    <div class="card-body">
+      <div class="src src-r">Комплексный разрыв заднего рога медиального мениска с вертикальным компонентом, распространяющимся до нижней суставной поверхности — с дегенеративными изменениями</div>
+      <div class="src src-i">Самая серьёзная находка. Мениск — хрящевая прокладка, не имеет собственного кровоснабжения и сам не срастается. «Выход на суставную поверхность» — значит разрыв сквозной. Как правило, показание к артроскопии. Вопрос к хирургу: оперировать или консервативно, и в какие сроки.</div>
+      <div class="src src-r">Передний рог медиального мениска: линейный гиперинтенсивный сигнал без выхода на суставную поверхность (Лотш IIA)</div>
+      <div class="src src-i">Передний рог — ранняя дегенерация, разрыва нет. Пока наблюдение.</div>
+    </div>
+  </div>
+
+  <div class="card" data-sev="medium">
+    <div class="card-top">
+      <div class="card-dot"></div>
+      <div class="card-info">
+        <div class="card-name">Дегенерация латерального мениска</div>
+        <div class="card-sub">задний рог · Лотш IIC · без выхода на поверхность</div>
+      </div>
+      <span class="sev-badge">Лотш IIC</span>
+    </div>
+    <div class="card-body">
+      <div class="src src-r">Задний рог латерального мениска: шаровидный клиновидный сигнал без выхода на суставную поверхность (Лотш IIC)</div>
+      <div class="src src-i">Это дегенеративное изменение — не разрыв. Выхода на суставную поверхность нет. Наблюдение, не требует срочного лечения.</div>
+    </div>
+  </div>
+
+  <!-- Связки -->
+  <div class="group-label">Связки</div>
+
+  <div class="card" data-sev="high">
+    <div class="card-top">
+      <div class="card-dot"></div>
+      <div class="card-info">
+        <div class="card-name">ПКС — растяжение (ACL sprain)</div>
+        <div class="card-sub">передняя крестообразная связка</div>
+      </div>
+      <span class="sev-badge">высокий</span>
+    </div>
+    <div class="card-body">
+      <div class="src src-r">Растяжение ПКС (ACL sprain)</div>
+      <div class="src src-i">ПКС повреждена, но не разорвана. Это главная стабилизирующая связка колена. В сочетании с разрывом мениска — особая осторожность. Тактика: физиотерапия, стабилизация, мониторинг. Хирург оценит дополнительно.</div>
+    </div>
+  </div>
+
+  <div class="card" data-sev="medium">
+    <div class="card-top">
+      <div class="card-dot"></div>
+      <div class="card-info">
+        <div class="card-name">МКС — растяжение (MCL sprain)</div>
+        <div class="card-sub">медиальная коллатеральная связка</div>
+      </div>
+      <span class="sev-badge">средний</span>
+    </div>
+    <div class="card-body">
+      <div class="src src-r">МКС: растяжение с отёком окружающих мягких тканей</div>
+      <div class="src src-i">Частая травма при боковых ударах. Лечится консервативно: покой, НПВС, физиотерапия.</div>
+    </div>
+  </div>
+
+  <div class="card" data-sev="ok">
+    <div class="card-top">
+      <div class="card-dot"></div>
+      <div class="card-info">
+        <div class="card-name">ЗКС и ЛКС — норма</div>
+        <div class="card-sub">задняя крестообразная и латеральная коллатеральная</div>
+      </div>
+      <span class="sev-badge">норма</span>
+    </div>
+    <div class="card-body">
+      <div class="src src-r">ЗКС (PCL): норма. ЛКС (LCL): норма.</div>
+    </div>
+  </div>
+
+  <!-- Прочее -->
+  <div class="group-label">Прочее</div>
+
+  <div class="card" data-sev="medium">
+    <div class="card-top">
+      <div class="card-dot"></div>
+      <div class="card-info">
+        <div class="card-name">Ганглиевая киста ЗКС</div>
+        <div class="card-sub">0,8 × 1,44 × 1,7 см · многокамерная</div>
+      </div>
+      <span class="sev-badge">средний</span>
+    </div>
+    <div class="card-body">
+      <div class="src src-r">Многокамерная ганглиевая киста у места прикрепления ЗКС к большеберцовой кости: 0,8 × 1,44 × 1,7 см</div>
+      <div class="src src-i">Доброкачественное жидкостное образование. Может давать ощущение давления или дискомфорта сзади колена. Тактика: наблюдение или аспирация (прокол), если мешает.</div>
+    </div>
+  </div>
+
+  <div class="card" data-sev="medium">
+    <div class="card-top">
+      <div class="card-dot"></div>
+      <div class="card-info">
+        <div class="card-name">Тендинопатия квадрицепса</div>
+        <div class="card-sub">у места прикрепления к надколеннику</div>
+      </div>
+      <span class="sev-badge">средний</span>
+    </div>
+    <div class="card-body">
+      <div class="src src-r">Промежуточный сигнал в сухожилии квадрицепса у места прикрепления к надколеннику → тендинопатия</div>
+      <div class="src src-i">Воспаление/дегенерация сухожилия. Лечится: эксцентрические упражнения, физиотерапия, НПВС при остром воспалении.</div>
+    </div>
+  </div>
+
+  <div class="card" data-sev="ok">
+    <div class="card-top">
+      <div class="card-dot"></div>
+      <div class="card-info">
+        <div class="card-name">Остальное — норма</div>
+        <div class="card-sub">надколенник, Гоффа, сухожилие надколенника, сосуды</div>
+      </div>
+      <span class="sev-badge">норма</span>
+    </div>
+    <div class="card-body">
+      <div class="src src-r">Надколенник: норма. Жировое тело Гоффа: норма. Сухожилие надколенника: норма. Подколенные сосуды и сухожилие: норма. Незначительный выпот в суставе.</div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ════════════════════════════════════════
+     ПРАВОЕ КОЛЕНО
+════════════════════════════════════════ -->
+<hr class="divider">
+
+<div class="section" style="margin-top:0;">
+  <div class="section-head">
+    <h2>Правое колено</h2>
+    <span class="section-note">Значительно лучше левого — нет разрывов, нет переломов</span>
+  </div>
+
+  <!-- Кости -->
+  <div class="group-label">Кости</div>
+
+  <div class="card" data-sev="medium">
+    <div class="card-top">
+      <div class="card-dot"></div>
+      <div class="card-info">
+        <div class="card-name">Отёк костного мозга</div>
+        <div class="card-sub">медиальная блоковидная вырезка бедра (femoral trochlea)</div>
+      </div>
+      <span class="sev-badge">средний</span>
+    </div>
+    <div class="card-body">
+      <div class="src src-r">Отёк костного мозга в медиальной блоковидной вырезке бедра</div>
+      <div class="src src-i">Воспалительный очаг без перелома. Боль при сгибании/разгибании. Без структурных повреждений.</div>
+    </div>
+  </div>
+
+  <div class="card" data-sev="ok">
+    <div class="card-top">
+      <div class="card-dot"></div>
+      <div class="card-info">
+        <div class="card-name">Кости и хрящ — норма</div>
+      </div>
+      <span class="sev-badge">норма</span>
+    </div>
+    <div class="card-body">
+      <div class="src src-r">Выравнивание: норма. Костной патологии нет. Суставной хрящ: intact.</div>
+    </div>
+  </div>
+
+  <!-- Мениски -->
+  <div class="group-label">Мениски</div>
+
+  <div class="card" data-sev="medium">
+    <div class="card-top">
+      <div class="card-dot"></div>
+      <div class="card-info">
+        <div class="card-name">Медиальный мениск — Лотш IIA</div>
+        <div class="card-sub">задний рог · без выхода на поверхность</div>
+      </div>
+      <span class="sev-badge">Лотш IIA</span>
+    </div>
+    <div class="card-body">
+      <div class="src src-r">Линейный гиперинтенсивный сигнал в заднем роге медиального мениска без выхода на суставную поверхность (Лотш IIA)</div>
+      <div class="src src-i">Ранняя дегенерация — не разрыв. Выхода на суставную поверхность нет. Значительно лучше, чем левое. Наблюдение.</div>
+    </div>
+  </div>
+
+  <div class="card" data-sev="medium">
+    <div class="card-top">
+      <div class="card-dot"></div>
+      <div class="card-info">
+        <div class="card-name">Латеральный мениск — Лотш IIA</div>
+        <div class="card-sub">задний рог · без выхода на поверхность</div>
+      </div>
+      <span class="sev-badge">Лотш IIA</span>
+    </div>
+    <div class="card-body">
+      <div class="src src-r">Линейный гиперинтенсивный сигнал в заднем роге латерального мениска без выхода на суставную поверхность (Лотш IIA)</div>
+      <div class="src src-i">Аналогично медиальному — дегенерация IIA, разрыва нет. Наблюдение.</div>
+    </div>
+  </div>
+
+  <!-- Связки -->
+  <div class="group-label">Связки</div>
+
+  <div class="card" data-sev="ok">
+    <div class="card-top">
+      <div class="card-dot"></div>
+      <div class="card-info">
+        <div class="card-name">ПКС — целая (Intact)</div>
+        <div class="card-sub">передняя крестообразная</div>
+      </div>
+      <span class="sev-badge">норма</span>
+    </div>
+    <div class="card-body">
+      <div class="src src-r">ACL (ПКС): Intact</div>
+      <div class="src src-i">В отличие от левого колена — не повреждена.</div>
+    </div>
+  </div>
+
+  <div class="card" data-sev="medium">
+    <div class="card-top">
+      <div class="card-dot"></div>
+      <div class="card-info">
+        <div class="card-name">МКС — растяжение</div>
+        <div class="card-sub">медиальная коллатеральная</div>
+      </div>
+      <span class="sev-badge">средний</span>
+    </div>
+    <div class="card-body">
+      <div class="src src-r">МКС: растяжение с отёком окружающих мягких тканей</div>
+      <div class="src src-i">Консервативное лечение: покой, НПВС, физиотерапия.</div>
+    </div>
+  </div>
+
+  <div class="card" data-sev="ok">
+    <div class="card-top">
+      <div class="card-dot"></div>
+      <div class="card-info">
+        <div class="card-name">ЗКС и ЛКС — норма</div>
+      </div>
+      <span class="sev-badge">норма</span>
+    </div>
+    <div class="card-body">
+      <div class="src src-r">ЗКС (PCL): норма. ЛКС (LCL): Intact.</div>
+    </div>
+  </div>
+
+  <!-- Прочее -->
+  <div class="group-label">Прочее</div>
+
+  <div class="card" data-sev="medium">
+    <div class="card-top">
+      <div class="card-dot"></div>
+      <div class="card-info">
+        <div class="card-name">Синдром ущемления жирового тела</div>
+        <div class="card-sub">передний наднадколенниковый · AP 11 мм</div>
+      </div>
+      <span class="sev-badge">средний</span>
+    </div>
+    <div class="card-body">
+      <div class="src src-r">Утолщение и отёк переднего наднадколенникового жирового тела (AP диаметр 11 мм) с выпуклой задней границей, вдавливающейся в наднадколенниковое углубление → синдром ущемления переднего наднадколенникового жирового тела</div>
+      <div class="src src-i">Объясняет боль в передней части колена при сгибании. Лечение: тейпирование надколенника, физиотерапия.</div>
+    </div>
+  </div>
+
+  <div class="card" data-sev="ok">
+    <div class="card-top">
+      <div class="card-dot"></div>
+      <div class="card-info">
+        <div class="card-name">Остальное — норма</div>
+        <div class="card-sub">надколенник, Гоффа, квадрицепс, сосуды</div>
+      </div>
+      <span class="sev-badge">норма</span>
+    </div>
+    <div class="card-body">
+      <div class="src src-r">Надколенник: норма. Жировое тело Гоффа: норма. Квадрицепс: норма. Сухожилие надколенника: норма. Подколенные сосуды: норма. Небольшая жидкость в глубокой поднадколенниковой бурсе. Поверхностный отёк мягких тканей передней поверхности колена.</div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ════════════════════════════════════════
+     ПРИОРИТЕТЫ
+════════════════════════════════════════ -->
+<hr class="divider">
+
+<div class="section" style="margin-top:0;">
+  <div class="section-head">
+    <h2>Приоритеты лечения</h2>
+    <span class="section-note">Интерпретация · не замена врачу</span>
+  </div>
+
+  <div class="priority-table" style="margin-bottom:20px;">
+    <div class="pt-head">
+      По срочности
+      <span style="font-size:11px;background:var(--purple-bg);color:var(--purple);border:1px solid var(--purple-bd);padding:2px 8px;border-radius:100px;font-weight:700;letter-spacing:0.06em;">💬 интерпретация</span>
+    </div>
+
+    <div class="pt-row">
+      <div class="pt-num" style="background:var(--red-bg);color:var(--red);">1</div>
+      <div class="pt-content">
+        <div class="pt-title">Разрыв мениска → консультация хирурга</div>
+        <div class="pt-detail">Комплексный разрыв заднего рога медиального мениска с выходом на суставную поверхность. Мениск сам не срастается. Вопрос: артроскопия или консервативно?</div>
+      </div>
+      <div class="pt-knee" style="background:var(--red-bg);color:var(--red);border-color:var(--red-bd);">Лев.</div>
+    </div>
+
+    <div class="pt-row">
+      <div class="pt-num" style="background:var(--amber-bg);color:var(--amber);">2</div>
+      <div class="pt-content">
+        <div class="pt-title">Остеохондральный перелом</div>
+        <div class="pt-detail">Перелом кости+хряща большеберцового плато. Ударная нагрузка — стоп до решения врача.</div>
+      </div>
+      <div class="pt-knee" style="background:var(--amber-bg);color:var(--amber);border-color:var(--amber-bd);">Лев.</div>
+    </div>
+
+    <div class="pt-row">
+      <div class="pt-num" style="background:var(--amber-bg);color:var(--amber);">3</div>
+      <div class="pt-content">
+        <div class="pt-title">Растяжение ПКС (ACL)</div>
+        <div class="pt-detail">Повреждена, не разорвана. Физиотерапия и стабилизация. В сочетании с разрывом мениска — особая осторожность.</div>
+      </div>
+      <div class="pt-knee" style="background:var(--amber-bg);color:var(--amber);border-color:var(--amber-bd);">Лев.</div>
+    </div>
+
+    <div class="pt-row">
+      <div class="pt-num" style="background:var(--yellow-bg);color:var(--yellow);">4</div>
+      <div class="pt-content">
+        <div class="pt-title">Растяжение МКС (оба колена)</div>
+        <div class="pt-detail">Консервативно: покой, НПВС, физиотерапия.</div>
+      </div>
+      <div class="pt-knee" style="background:var(--yellow-bg);color:var(--yellow);border-color:var(--yellow-bd);">Оба</div>
+    </div>
+
+    <div class="pt-row">
+      <div class="pt-num" style="background:var(--yellow-bg);color:var(--yellow);">5</div>
+      <div class="pt-content">
+        <div class="pt-title">Ганглиевая киста ЗКС</div>
+        <div class="pt-detail">0,8 × 1,44 × 1,7 см. Наблюдение или аспирация если беспокоит.</div>
+      </div>
+      <div class="pt-knee" style="background:var(--red-bg);color:var(--red);border-color:var(--red-bd);">Лев.</div>
+    </div>
+
+    <div class="pt-row">
+      <div class="pt-num" style="background:var(--yellow-bg);color:var(--yellow);">6</div>
+      <div class="pt-content">
+        <div class="pt-title">Тендинопатия квадрицепса</div>
+        <div class="pt-detail">Эксцентрические упражнения, физиотерапия.</div>
+      </div>
+      <div class="pt-knee" style="background:var(--red-bg);color:var(--red);border-color:var(--red-bd);">Лев.</div>
+    </div>
+
+    <div class="pt-row">
+      <div class="pt-num" style="background:var(--bg);color:var(--text4);border:1px solid var(--border);">7</div>
+      <div class="pt-content">
+        <div class="pt-title">Дегенерация менисков IIA/IIC</div>
+        <div class="pt-detail">Фоновый износ. Наблюдение, умеренная нагрузка.</div>
+      </div>
+      <div class="pt-knee" style="background:var(--bg);color:var(--text3);border-color:var(--border2);">Оба</div>
+    </div>
+
+    <div class="pt-row">
+      <div class="pt-num" style="background:var(--bg);color:var(--text4);border:1px solid var(--border);">8</div>
+      <div class="pt-content">
+        <div class="pt-title">Синдром ущемления жирового тела</div>
+        <div class="pt-detail">Тейпирование надколенника, физиотерапия.</div>
+      </div>
+      <div class="pt-knee" style="background:var(--bg);color:var(--text3);border-color:var(--border2);">Прав.</div>
+    </div>
+  </div>
+
+  <div class="info-box ib-blue" style="margin-bottom:20px;">
+    <div class="ib-label">Следующий шаг</div>
+    <p>Приём у <strong>dr. Nyoman Adhi Pratama, SpOT</strong> с распечаткой МРТ.<br>
+    Главный вопрос: разрыв мениска — артроскопия или консервативно, и в какие сроки?</p>
+    <ul>
+      <li><strong>Серфинг и ударные нагрузки</strong> — пауза до решения хирурга</li>
+      <li>Взять этот документ на приём</li>
+    </ul>
+  </div>
+
+  <!-- Meta -->
+  <div class="group-label">Метаданные исследования</div>
+  <div class="meta-grid">
+    <div class="meta-item"><div class="meta-key">Учреждение</div><div class="meta-val">SH Denpasar · Siloam</div></div>
+    <div class="meta-item"><div class="meta-key">Дата МРТ</div><div class="meta-val">2026-03-18 · 10:40</div></div>
+    <div class="meta-item"><div class="meta-key">Метод</div><div class="meta-val">Multiplanar T1, T2, PDFS</div></div>
+    <div class="meta-item"><div class="meta-key">Accession</div><div class="meta-val">14000034294603</div></div>
+    <div class="meta-item"><div class="meta-key">Радиолог</div><div class="meta-val">dr. Lorentia Harisusanti Sp.Rad(K)</div></div>
+    <div class="meta-item"><div class="meta-key">Транскрибер</div><div class="meta-val">dr. Gilbert Sterling Octavius</div></div>
+    <div class="meta-item"><div class="meta-key">Направил</div><div class="meta-val">dr. Nyoman Adhi Pratama SpOT</div></div>
+    <div class="meta-item"><div class="meta-key">Подписано</div><div class="meta-val">2026-03-18 · 21:00</div></div>
+  </div>
+</div>
+
+<div style="height:48px;"></div>
+</div><!-- /main -->
+
+<footer class="footer">
+  <span>МРТ · 18.03.2026 · Siloam Denpasar</span>
+  <span>Структура данных из репорта радиолога. Пояснения — интерпретация, не диагноз.</span>
+</footer>
+
+</body>
+</html>
