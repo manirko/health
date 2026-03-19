@@ -12,53 +12,53 @@
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 :root {
-  --white: #fff;
-  --bg: #f7f7f8;
-  --surface: #fff;
-  --border: #e4e4e7;
-  --border2: #d4d4d8;
+  --white:   #ffffff;
+  --bg:      #f5f5f7;
+  --surface: #ffffff;
+  --border:  #e8e8ed;
+  --border2: #d2d2d7;
 
-  --text:  #18181b;
-  --text2: #3f3f46;
-  --text3: #71717a;
-  --text4: #a1a1aa;
+  --text:  #1d1d1f;
+  --text2: #3a3a3c;
+  --text3: #6e6e73;
+  --text4: #aeaeb2;
 
-  --red:     #dc2626;
-  --red-bg:  #fef2f2;
-  --red-bd:  #fecaca;
-  --red-t:   #991b1b;
+  --red:     #ff3b30;
+  --red-bg:  #fff5f4;
+  --red-bd:  #ffd0cc;
+  --red-t:   #c0392b;
 
-  --amber:    #b45309;
-  --amber-bg: #fffbeb;
-  --amber-bd: #fde68a;
-  --amber-t:  #92400e;
+  --amber:    #ff9500;
+  --amber-bg: #fff8ee;
+  --amber-bd: #ffe0a8;
+  --amber-t:  #c97300;
 
-  --yellow:    #854d0e;
-  --yellow-bg: #fefce8;
-  --yellow-bd: #fef08a;
-  --yellow-t:  #713f12;
+  --yellow:    #af8700;
+  --yellow-bg: #fffde8;
+  --yellow-bd: #fff0a0;
+  --yellow-t:  #8a6a00;
 
-  --green:    #166534;
-  --green-bg: #f0fdf4;
-  --green-bd: #bbf7d0;
+  --green:    #1c7c4a;
+  --green-bg: #f2fdf6;
+  --green-bd: #a8eac5;
 
-  --blue:    #1d4ed8;
-  --blue-bg: #eff6ff;
-  --blue-bd: #bfdbfe;
-  --blue-t:  #1e40af;
+  --blue:    #0071e3;
+  --blue-bg: #f0f7ff;
+  --blue-bd: #b3d7ff;
+  --blue-t:  #0058b0;
 
-  --purple:    #7c3aed;
-  --purple-bg: #f5f3ff;
-  --purple-bd: #ddd6fe;
-  --purple-t:  #6d28d9;
+  --purple:    #6e3dd1;
+  --purple-bg: #f5f0ff;
+  --purple-bd: #d4bfff;
+  --purple-t:  #5328a8;
 
-  --radius: 12px;
-  --radius-sm: 8px;
-  --shadow: 0 1px 3px rgba(0,0,0,.08), 0 1px 2px rgba(0,0,0,.04);
-  --shadow-md: 0 4px 6px -1px rgba(0,0,0,.07), 0 2px 4px -2px rgba(0,0,0,.05);
+  --radius: 14px;
+  --radius-sm: 10px;
+  --shadow: 0 2px 8px rgba(0,0,0,.06), 0 1px 2px rgba(0,0,0,.04);
+  --shadow-md: 0 8px 24px rgba(0,0,0,.08), 0 2px 6px rgba(0,0,0,.04);
 
-  --font: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
-  --font-mono: 'SF Mono', 'Cascadia Code', 'Fira Code', monospace;
+  --font: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Helvetica Neue', system-ui, sans-serif;
+  --font-mono: 'SF Mono', 'Menlo', 'Cascadia Code', monospace;
 }
 
 body {
@@ -74,10 +74,12 @@ body {
    TOP NAV
 ═══════════════════════════════════════════════ */
 .nav {
-  background: var(--white);
-  border-bottom: 1px solid var(--border);
+  background: rgba(255,255,255,0.82);
+  backdrop-filter: saturate(180%) blur(20px);
+  -webkit-backdrop-filter: saturate(180%) blur(20px);
+  border-bottom: 1px solid rgba(0,0,0,0.08);
   padding: 0 24px;
-  height: 48px;
+  height: 52px;
   display: flex;
   align-items: center;
   gap: 8px;
@@ -110,8 +112,8 @@ body {
   display: inline-flex;
   align-items: center;
   gap: 5px;
-  padding: 4px 10px;
-  border-radius: 6px;
+  padding: 5px 12px;
+  border-radius: 100px;
   border: 1px solid var(--border2);
   background: var(--white);
   color: var(--text2);
@@ -119,10 +121,11 @@ body {
   font-weight: 500;
   text-decoration: none;
   cursor: pointer;
-  transition: background 0.15s;
+  transition: background 0.15s, border-color 0.15s;
+  letter-spacing: -0.01em;
 }
 
-.nav-btn:hover { background: var(--bg); }
+.nav-btn:hover { background: var(--bg); border-color: var(--text4); }
 
 /* ═══════════════════════════════════════════════
    HERO
@@ -130,25 +133,25 @@ body {
 .hero {
   background: var(--white);
   border-bottom: 1px solid var(--border);
-  padding: 40px 24px 32px;
+  padding: 44px 28px 36px;
   max-width: 900px;
   margin: 0 auto;
 }
 
 @media(min-width: 640px) {
-  .hero { padding: 48px 48px 36px; }
+  .hero { padding: 56px 56px 44px; }
 }
 
 .hero-eyebrow {
   display: flex;
   align-items: center;
   gap: 8px;
-  font-size: 12px;
+  font-size: 11px;
   font-weight: 600;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.06em;
   text-transform: uppercase;
   color: var(--text4);
-  margin-bottom: 12px;
+  margin-bottom: 14px;
 }
 
 .hero-badge {
@@ -163,18 +166,20 @@ body {
 }
 
 .hero h1 {
-  font-size: clamp(24px, 5vw, 36px);
-  font-weight: 800;
-  letter-spacing: -0.035em;
-  line-height: 1.1;
+  font-size: clamp(26px, 5vw, 40px);
+  font-weight: 700;
+  letter-spacing: -0.04em;
+  line-height: 1.08;
   color: var(--text);
-  margin-bottom: 8px;
+  margin-bottom: 10px;
 }
 
 .hero-sub {
-  font-size: 16px;
+  font-size: 17px;
   color: var(--text3);
-  margin-bottom: 24px;
+  font-weight: 400;
+  letter-spacing: -0.01em;
+  margin-bottom: 28px;
 }
 
 /* Key stats row */
@@ -189,21 +194,23 @@ body {
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  padding: 6px 12px;
+  padding: 5px 12px;
   border-radius: 100px;
-  border: 1px solid var(--border2);
+  border: 1px solid var(--border);
   background: var(--bg);
   font-size: 13px;
   color: var(--text2);
+  letter-spacing: -0.01em;
 }
 
 .stat-chip .sc-label {
   font-size: 11px;
   color: var(--text4);
-  margin-right: 2px;
+  font-weight: 500;
+  margin-right: 1px;
 }
 
-.stat-chip .sc-val { font-weight: 600; }
+.stat-chip .sc-val { font-weight: 600; letter-spacing: -0.02em; }
 
 /* Alert box */
 .alert {
@@ -235,33 +242,33 @@ body {
 .main {
   max-width: 900px;
   margin: 0 auto;
-  padding: 0 24px;
+  padding: 0 28px;
 }
 
 @media(min-width: 640px) {
-  .main { padding: 0 48px; }
+  .main { padding: 0 56px; }
 }
 
 /* ═══════════════════════════════════════════════
    SECTION
 ═══════════════════════════════════════════════ */
 .section {
-  margin-top: 32px;
+  margin-top: 36px;
 }
 
 .section-head {
   display: flex;
   align-items: baseline;
   gap: 10px;
-  margin-bottom: 16px;
-  padding-bottom: 12px;
-  border-bottom: 2px solid var(--border);
+  margin-bottom: 18px;
+  padding-bottom: 14px;
+  border-bottom: 1px solid var(--border);
 }
 
 .section-head h2 {
-  font-size: 20px;
+  font-size: 21px;
   font-weight: 700;
-  letter-spacing: -0.02em;
+  letter-spacing: -0.025em;
   color: var(--text);
 }
 
@@ -289,10 +296,12 @@ body {
   background: var(--white);
   border: 1px solid var(--border);
   border-radius: var(--radius);
-  box-shadow: var(--shadow);
+  box-shadow: 0 2px 6px rgba(0,0,0,.05);
   margin-bottom: 10px;
   overflow: hidden;
+  transition: box-shadow 0.2s;
 }
+.card:hover { box-shadow: 0 4px 12px rgba(0,0,0,.08); }
 
 .card + .card { }
 
@@ -303,7 +312,7 @@ body {
 .card[data-sev="ok"]       { border-left: 4px solid #22c55e; }
 
 .card-top {
-  padding: 14px 18px 14px 16px;
+  padding: 16px 20px 16px 16px;
   display: flex;
   align-items: flex-start;
   gap: 12px;
@@ -326,8 +335,9 @@ body {
 .card-name {
   font-size: 15px;
   font-weight: 600;
-  letter-spacing: -0.01em;
+  letter-spacing: -0.015em;
   color: var(--text);
+  line-height: 1.3;
 }
 
 .card-sub {
@@ -354,7 +364,7 @@ body {
 /* card body */
 .card-body {
   border-top: 1px solid var(--border);
-  padding: 14px 18px 14px 16px;
+  padding: 16px 20px 16px 16px;
   display: flex;
   flex-direction: column;
   gap: 8px;
@@ -364,10 +374,10 @@ body {
 .src {
   display: flex;
   gap: 10px;
-  padding: 10px 12px;
-  border-radius: var(--radius-sm);
-  font-size: 13px;
-  line-height: 1.55;
+  padding: 11px 14px;
+  border-radius: 10px;
+  font-size: 13.5px;
+  line-height: 1.6;
   color: var(--text2);
 }
 
@@ -615,14 +625,17 @@ body {
     <div class="stat-chip"><span class="sc-label">Подписано</span><span class="sc-val">18.03.2026 · 21:00</span></div>
   </div>
 
-  <div style="margin-top:12px;display:flex;align-items:center;gap:10px;flex-wrap:wrap;">
+  <div style="margin-top:20px;display:flex;align-items:center;gap:10px;flex-wrap:wrap;">
     <a href="https://radiologi.siloamhospitals.com/externalInterface/shareviewexi?ENC=wzhfXjIcD/rOKE6aMIEkPw==" target="_blank"
-      style="display:inline-flex;align-items:center;gap:6px;padding:7px 14px;background:#eff6ff;border:1px solid #bfdbfe;border-radius:8px;font-size:13px;font-weight:600;color:#1d4ed8;text-decoration:none;"
-      onmouseover="this.style.background='#dbeafe'" onmouseout="this.style.background='#eff6ff'">
-      🖼 Открыть снимки МРТ
+      style="display:inline-flex;align-items:center;gap:8px;padding:11px 22px;background:#0071e3;border-radius:100px;font-size:15px;font-weight:600;color:#fff;text-decoration:none;letter-spacing:-0.01em;box-shadow:0 2px 8px rgba(0,113,227,0.35);transition:background 0.15s,box-shadow 0.15s;"
+      onmouseover="this.style.background='#0077ed';this.style.boxShadow='0 4px 14px rgba(0,113,227,0.45)'" onmouseout="this.style.background='#0071e3';this.style.boxShadow='0 2px 8px rgba(0,113,227,0.35)'">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+      Открыть снимки МРТ
     </a>
-    <span style="display:inline-flex;align-items:center;gap:6px;padding:7px 14px;background:#f9f9f9;border:1px solid #e4e4e7;border-radius:8px;font-size:13px;color:#3f3f46;">
-      🔑 Пароль: <strong style="font-family:monospace;letter-spacing:0.05em;color:#18181b;">19890514</strong>
+    <span style="display:inline-flex;align-items:center;gap:6px;padding:10px 16px;background:var(--bg);border:1px solid var(--border);border-radius:100px;font-size:14px;color:var(--text3);letter-spacing:-0.01em;">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+      <span style="font-weight:500;color:var(--text3);">Пароль</span>
+      <code style="font-family:var(--font-mono);font-size:13px;font-weight:700;color:var(--text);letter-spacing:0.05em;background:var(--white);padding:2px 8px;border-radius:6px;border:1px solid var(--border);">19890514</code>
     </span>
   </div>
 
